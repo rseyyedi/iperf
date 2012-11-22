@@ -1,6 +1,66 @@
+iperf_zynq_7000
 
+Description
+===========
+
+The iperf is an open source program, used as a network testing tool that can create TCP and UDP data streams and measure the throughput of a network that is carrying them.
+
+This project explains how to compile, run,  and test iperf on your Zynq-7000 board linux.
+
+You can download iperf from: http://iperf.sourceforge.net/
+(The iperf version included in this project is: "iperf 2.0.5")
+
+
+Installation
+============
+
+1. You need to have the "ARM GNU Tools" installed on your machine. you can find it from Xilinx website under: http://wiki.xilinx.com/zynq-tools
+
+2. Use the following command to add the tools to the Linux host path and setup the environment vaiable in a Bash shell
+	(at the time of writing I was using "xilinx-2011.09-50-arm-xilinx-linux-gnueabi" version of GNU tool)
+	
+	bach> export CROSS_COMPILE=arm-xilinx-linux-gnueabi-
+	bash> export PATH=<path>/CodeSourcery/2011.09/lin/Sourcery_CodeBench_Lite/bin:$PATH
+
+Depending on the version of CodeBench tools you are using, the install path may be different than that above.
+
+	bash> export CROSS_COMPILE=arm-xilinx-linux-gnueabi-
+	bash> export PATH=<path>/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin:$PATH
+
+
+2. Run the ./setVaiable to set up compilers variables
+
+3. cd iperf-2.0.5
+
+4. Start the iperf configuration for zynq-7000 by running:
+
+	bash> ./configure --build=arm-xilinx-linux-gnueabi --host=armv7-xilinx-linux-gnueabi
+
+
+5. then compile iperf tool statically
+	bash> make CFLAGS=-static CXXFLAGS=-static
+
+
+6. you can find your cross-copiled version of iperf executable binary in iperf-2.0.5/src/ folder.
+
+
+Troubleshooting
+===============
+
+If an undefined reference to 'rpl_malloc' problem occurs during the compilation process you can do the following:
+
+	$ export ac_cv_func_malloc_0_nonnull=yes
+
+Note: Preferable to start a clean build after setting up this variable to avoid further errors.
+
+
+Author
+======
 Razi Seyyedi
 email:	razi.seyyedi@gmail.com
-Written on Nov. 16, 2012
+Nov. 22, 2012
 
-This project is about running and downloading "iperf" into Zynq-7000 board linux.
+
+Acknowledgment
+==============
+Zynq-7000 modified version of: http://embetek.blogspot.de/2012/04/iperf-for-arm-cross-compile.html
