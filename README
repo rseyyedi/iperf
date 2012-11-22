@@ -3,7 +3,7 @@ iperf_zynq_7000
 Description
 ===========
 
-The iperf is an open source program, used as a network testing tool that can create TCP and UDP data streams and measure the throughput of a network that is carrying them.
+The iperf is an open source program, used as a network testing tool that can create TCP and UDP data streams and measures the throughput of a network that is carrying them.
 
 This project explains how to compile, run,  and test iperf on your Zynq-7000 board linux.
 
@@ -28,7 +28,9 @@ Depending on the version of CodeBench tools you are using, the install path may 
 	bash> export PATH=<path>/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin:$PATH
 
 
-2. Run the ./setVaiable to set up compilers variables
+2. Run this command  to set up compilers variables
+
+	bash> source ./setVariable 
 
 3. cd iperf-2.0.5
 
@@ -41,7 +43,7 @@ Depending on the version of CodeBench tools you are using, the install path may 
 	bash> make CFLAGS=-static CXXFLAGS=-static
 
 
-6. you can find your cross-copiled version of iperf executable binary in iperf-2.0.5/src/ folder.
+6. you can find your cross-compiled version of iperf executable binary in iperf-2.0.5/src/ folder.
 
 
 Troubleshooting
